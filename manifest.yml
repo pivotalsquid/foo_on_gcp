@@ -1,0 +1,14 @@
+applications:
+  - name: foo
+    label: 'Foo app'
+    description: Foo fu fooooooooo
+
+  - name: migrator
+    buildpack: ruby_buildpack
+    command: bundle exec rake db:migrate
+    health-check-type: none
+    instances: 1
+    no-route: true
+
+env:
+  DATABASE_URL: mysql2://<USER_ID>:<PASSWORD>@<DB IP ADDRESS>/<DB NAME>?reconnect=true&wait_timeout=36000&sslkey=client-key.pem&sslcert=client-cert.pem&sslca=ca-cert.pem
